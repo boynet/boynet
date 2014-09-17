@@ -654,10 +654,12 @@
         }
 
         function handleTouchMove(e) {
+            console.log(e);
             elementHover = $$(document.elementFromPoint(e.touches[0].pageX, e.touches[0].pageY));
             if (!$$(elementHover).is('li')) {
                 return;
             }
+            console.log('yes');
             letterToScroll = elementHover.html();
             hoverLetter();
         }
