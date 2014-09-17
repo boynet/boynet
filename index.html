@@ -13,6 +13,25 @@
     
     <!-- Path to your custom app styles-->
     <link rel="stylesheet" href="http://www.idangero.us/framework7/dist/css/framework7.themes.min.css">
+    <style>
+      
+      .alphascroll {
+    color: #057bf7;
+    text-shadow: none;
+    list-style: none;
+    position: fixed;
+    right: 0px;
+    z-index: 1001;
+    font-size: 12px;
+    font-weight: bold;
+    margin:0px;
+    padding:0px;
+    height:100%;
+}
+.alphascroll li{
+     padding-right:5px;   
+}
+    </style>
   </head>
   <body>
     <!-- Status bar overlay for full screen mode (PhoneGap) -->
@@ -608,9 +627,91 @@
     </div>
     <!-- Path to Framework7 Library JS-->
     <script type="text/javascript" src="http://www.idangero.us/framework7/dist/js/framework7.min.js"></script>
-    <!-- Path to your app js-->
-    <script type="text/javascript" src="js/alphascroll.js"></script>
+
     <script>
+     var $$ = Framework7.$;
+    Framework7.prototype.plugins.alphascroll = function (app, params) {
+    var $ = window.Dom7;
+    var letterToScroll, page;
+    var letterscrolled;
+    var elementHover;
+    var letters=[];
+    var eventsTarget;
+    var pageContent;
+
+    function initAlphascroll(page) {
+        eventsTarget = $(page.container);
+        if (!eventsTarget.hasClass('.alphascroll')) {
+            eventsTarget = eventsTarget.find('.alphascroll');
+        }
+        if (eventsTarget.length === 0) return;
+        page = page;
+        pageContent = $$(page.container).find('.page-content');
+        letters = getLetters();
+
+        function handleTouchStart(e) {
+            if (app.device.os === 'android') e.preventDefault();
+        }
+
+        function handleTouchMove(e) {
+            elementHover = $$(document.elementFromPoint(e.touches[0].pageX, e.touches[0].pageY));
+            if (!$$(elementHover).is('li')) {
+                return;
+            }
+            letterToScroll = elementHover.html();
+            hoverLetter();
+        }
+
+        function handleTouchEnd(e) {
+            pageContent.find('.alphascroll li.hover').removeClass('hover');
+            letterscrolled = null;
+        }
+        
+        $$(pageContent).on('click','.alphascroll li',function(e){
+            elementHover = $$(e.target);
+            letterToScroll = $$(e.target).html();
+            hoverLetter();
+        });
+
+        function getLetters(){
+            var _letters = [];
+           pageContent.find('.list-group').each(function () {
+               _letterDiv = $$(this).find('ul .list-group-title');
+               _letter = _letterDiv.html();
+               _letterDiv.addClass('letter-'+_letter);
+               eventsTarget.append('<li>' + _letter + '</li>');
+              _letters.push(_letter);
+           });
+            return _letters;
+        }
+
+        function hoverLetter() {
+            if (letterToScroll !== letterscrolled) {
+                pageContent.find('.alphascroll li.hover').removeClass('hover');
+                elementHover.addClass('hover');
+                offset = -43;
+                scrollTo = pageContent.find('.list-group ul li.letter-' + letterToScroll)
+                if (!scrollTo.length) return;
+                offset = offset + pageContent.offset().top + scrollTo.offset().top;
+                pageContent.scrollTop(offset);
+                letterscrolled = letterToScroll;
+            }
+
+        }
+
+        eventsTarget.on(app.touchEvents.start, handleTouchStart);
+        eventsTarget.on(app.touchEvents.move, handleTouchMove);
+        eventsTarget.on(app.touchEvents.end, handleTouchEnd);
+    }
+
+
+    return {
+        hooks: {
+            pageInit:initAlphascroll,
+            pageAfterAnimation: initAlphascroll
+        }
+    };
+};
     var myApp = new Framework7();
     
     </script>
