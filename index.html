@@ -664,7 +664,7 @@ transform: translateY(-50%);
             letterscrolled = null;
         }
         
-        $$(pageContent).on('click','.alphascroll li',function(e){
+        $$(page.container).on('click','.alphascroll li',function(e){
             elementHover = $$(e.target);
             letterToScroll = $$(e.target).html();
             hoverLetter();
