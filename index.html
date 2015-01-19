@@ -1,763 +1,648 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <!-- Required meta tags-->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <!-- Your app title -->
-    <title>Framework7 Indexed List Plugin Demo</title>
-    <!-- Path to Framework7 Library CSS-->
-    <link rel="stylesheet" href="http://www.idangero.us/framework7/dist/css/framework7.min.css">
-    
-    <!-- Path to your custom app styles-->
-    <link rel="stylesheet" href="http://www.idangero.us/framework7/dist/css/framework7.themes.min.css">
-    <style>
-.list-index {
-    color: #057bf7;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    position:absolute;
-    font-size: 11px;
-    font-weight: bold;
-    position:absolute;
-    z-index: 199;
-    top:0%;
-    height: 100%;
-    right: 0;
-    background: #fff;
-    width: 15px;
-    text-align: center;
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
-    -webkit-justify-content: center;
-    justify-content: center;
-    -webkit-box-orient: vertical;
-    -moz-box-orient: vertical;
-    -ms-flex-direction: column;
-    -webkit-flex-direction: column;
-    flex-direction: column;
-}
-.list-index li{
-    position: relative;
-    z-index: 10;
-}
-.list-index li:before {
-    content: '';
-    position: absolute;
-    right: 100%;
-    width: 10px;
-    height: 100%;
-    top: 0;
-}
-html[dir="rtl"] .list-index {
-    right: auto;
-    left: 0;
-}
-html[dir="rtl"] .list-index li:before {
-    right: auto;
-    left: 100%;
-}
-    </style>
-  </head>
-  <body>
-    <!-- Status bar overlay for full screen mode (PhoneGap) -->
-    <div class="statusbar-overlay"></div>
-    <!-- Views -->
-    <div class="views">
-      <!-- Your main view, should have "view-main" class -->
-      <div class="view view-main">
-        <!-- Top Navbar-->
-        <div class="navbar">
-          <div class="navbar-inner">
-            <!-- We need cool sliding animation on title element, so we have additional "sliding" class -->
-            <div class="center sliding">Framework7 Indexed List Plugin Demo</div>
-          </div>
-        </div>
-        <!-- Pages container, because we use fixed-through navbar and toolbar, it has additional appropriate classes-->
-        <div class="pages navbar-through toolbar-through">
-          <!-- Page, "data-page" contains page name -->
-          <div data-page="index" class="page">
-            <ul class="list-index"></ul>
-            <div class="page-content contacts-content">
-                    <div class="list-block contacts-block">
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">A</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">Aaron </div>
-                              </div>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>Indexed List</title>
+        <link rel="stylesheet" href="http://www.idangero.us/framework7/dist/css/framework7.min.css">
+        <link rel="stylesheet" href="stylesheets/framework7.indexed-list.css">
+    </head>
+    <body>
+        <div class="statusbar-overlay"></div>
+        <div class="panel-overlay"></div>
+        <div class="panel panel-left panel-reveal">
+            <div class="view">
+                <div class="pages">
+                    <div class="page">
+                        <div class="page-content">
+                            <div class="list-block">
+                                <ul>
+                                    <li><a href="#" class="item-content item-link">
+                                        <div class="item-inner">
+                                            <div class="item-title">Link 1</div>
+                                        </div></a></li>
+                                    <li><a href="#" class="item-content item-link">
+                                        <div class="item-inner">
+                                            <div class="item-title">Link 2</div>
+                                        </div></a></li>
+                                    <li><a href="#" class="item-content item-link">
+                                        <div class="item-inner">
+                                            <div class="item-title">Link 3</div>
+                                        </div></a></li>
+                                    <li><a href="#" class="item-content item-link">
+                                        <div class="item-inner">
+                                            <div class="item-title">Link 4</div>
+                                        </div></a></li>
+                                    <li><a href="#" class="item-content item-link">
+                                        <div class="item-inner">
+                                            <div class="item-title">Link 5</div>
+                                        </div></a></li>
+                                </ul>
                             </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">Abbie</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">Adam</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">Adele</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">Agatha</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">Agnes</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">Albert</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">Alexander</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">B</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">Bailey</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">Barclay</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">Bartolo</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">Bellamy</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">Belle</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">Benjamin</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">C</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">Caiden</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">Calvin</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">Candy</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">Carl</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">Cherilyn</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">Chester</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">Chloe</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">d</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">dddddddd d  d</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                                
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">e</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">easdas dasd ae</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      
-                                
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">f</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">f saasd as</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                                
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">g</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">good</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">good</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">good</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                                
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">h</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">hi hi hi hi</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">hi hi hi hi</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                                
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">i</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">iii i i</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                                
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">j</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">job job job</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">k</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">kkkkkkkk</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">l</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">love is in the air!</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">love is in the air!</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">love is in the air!</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">love is in the air!</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">love is in the air!</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">m</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">mm m m </div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">n</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">nnnnn</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">o</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">ohh</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">p</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">papap k</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">q</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">qq q q</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">r</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">rar</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">s</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">sss</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">t</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">ttt</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">u</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">uuu</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      
-                      
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">v</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">vvvvvvvv</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">vvvvvvvv</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">vvvvvvvv</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">w</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">wwwwwww</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">x</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">xxxx x</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">xxxx x</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">xxxx x</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">xxxx x</div>
-                              </div>
-                            </div>
-                          </li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">xxxx x</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">y</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">yyy</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      
-                      <div class="list-group">
-                        <ul>
-                          <li class="list-group-title">z</li>
-                          <li>
-                            <div class="item-content">
-                              <div class="item-inner">
-                                <div class="item-title">zz zz  z</div>
-                              </div>
-                            </div>
-                          </li>
-                        </ul>
-                      </div>
-                      
+                            <div class="content-block">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam neque tellus, dignissim quis turpis id, lacinia euismod ipsum. Pellentesque auctor laoreet velit, consectetur aliquam urna pharetra eget. Fusce hendrerit risus sit amet interdum mollis. Donec et consectetur arcu, non aliquet mauris.</div>
+                        </div>
                     </div>
-                  </div>
-          </div>
+                </div>
+            </div>
         </div>
-        <!-- Bottom Toolbar-->
-        <div class="toolbar">
-          <div class="toolbar-inner">
-            <!-- Toolbar links -->
-            <a href="https://github.com/boynet/Framework7-Indexed-List-plugin" class="link external">to plugin github page</a>
-          </div>
+        <div class="panel panel-right panel-reveal">
+            <div class="view">
+                <div class="pages">
+                    <div class="page">
+                        <div class="page-content">
+                            <div class="list-block">
+                                <ul>
+                                    <li><a href="#" class="item-content item-link">
+                                        <div class="item-inner">
+                                            <div class="item-title">Link 1</div>
+                                        </div></a></li>
+                                    <li><a href="#" class="item-content item-link">
+                                        <div class="item-inner">
+                                            <div class="item-title">Link 2</div>
+                                        </div></a></li>
+                                    <li><a href="#" class="item-content item-link">
+                                        <div class="item-inner">
+                                            <div class="item-title">Link 3</div>
+                                        </div></a></li>
+                                    <li><a href="#" class="item-content item-link">
+                                        <div class="item-inner">
+                                            <div class="item-title">Link 4</div>
+                                        </div></a></li>
+                                    <li><a href="#" class="item-content item-link">
+                                        <div class="item-inner">
+                                            <div class="item-title">Link 5</div>
+                                        </div></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <!-- Path to Framework7 Library JS-->
-    <script type="text/javascript" src="http://www.idangero.us/framework7/dist/js/framework7.min.js"></script>
-
-    <script>
-     var $$ = Framework7.$;
-Framework7.prototype.plugins.indexedlist = function (app, params) {
-    var $ = window.Dom7;
-    
-
-    function initIndexedList(page) {
-        var eventsTarget = $(page.container).find('.list-index');
-        if (eventsTarget.length === 0) return;
-        
-        var pageContent = $(page.container).find('.page-content');
-        setTimeout(function(){buildLetters();}, 500);
-        
-        var isTouched, isMoved;
-        var letterToScroll;
-        var elementHover;
-        var fixedNavbar = pageContent.parents('.navbar-fixed').length > 0 || pageContent.parents('.navbar-through').length > 0;
-        var searchBar = $(page.container).find('.searchbar').length > 0;
-        
-        if (searchBar){
-            console.log(eventsTarget);
-            eventsTarget.css('margin-top','44px');
-        }
-        
-        function handleTouchStart(e) {
-            e.preventDefault();
-            isTouched = true;
-
-            var target = $(e.target);
-            if (!target.is('li')) target = target.parents('li');
-            if (target.length > 0) {
-                scrollToLetter(target.eq(0).data('index-letter'));
-            }
-        }
-
-        function handleTouchMove(e) {
-            if (!isTouched) return;
-            e.preventDefault();
-            var target;
-            if (e.type === 'mousemove') {
-                target = $(e.target);
-            }
-            else {
-                target = $(document.elementFromPoint(e.touches[0].pageX, e.touches[0].pageY));
-            }
-            if (!target.is('li')) target = target.parents('li');
-                
-            if (target.length === 0) return;
-            if (target.length > 0 && !target.is('.list-index li')) return;
-
-            scrollToLetter(target.eq(0).data('index-letter'));
-        }
-
-        function handleTouchEnd(e) {
-            isTouched = isMoved = false;
-        }
-        
-        $(page.container).on('click','.list-index li',function(e){
-            var target = $(e.target);
-            if (!target.is('li')) target = target.parents('li');
-            if (target.length > 0) {
-                scrollToLetter(target.eq(0).data('index-letter'));
-            }
-        });
-
-        function buildLetters(){
-            var _letters = [];
-            var lettersHtml = '';
-            pageContent.find('.list-group').each(function () {
-                var _letterDiv = $(this).find('ul .list-group-title');
-                var _letter = _letterDiv.html().trim().charAt(0).toUpperCase();
-                _letterDiv.attr('data-index-letter', _letter);
-                lettersHtml += '<li data-index-letter="' + _letter + '">' + _letter + '</li>';
-                _letters.push(_letter);
-            });
-            eventsTarget.html(lettersHtml);
-            return _letters;
-        }
-
-        function scrollToLetter(letter) {
-            var scrollToEl = pageContent.find('.list-group ul li[data-index-letter="' + letter + '"]');
-            if (!scrollToEl.length) return;
-            var scrollTop = scrollToEl.offset().top + pageContent.scrollTop() - (fixedNavbar ? 44 : 0) - (searchBar ? 44 : 0);
-            pageContent.scrollTop(scrollTop);
-        }
-
-        eventsTarget.on(app.touchEvents.start, handleTouchStart);
-        eventsTarget.on(app.touchEvents.move, handleTouchMove);
-        eventsTarget.on(app.touchEvents.end, handleTouchEnd);
-    }
-
-
-    return {
-        hooks: {
-            pageInit: initIndexedList,
-        }
-    };
-};
-
-    var myApp = new Framework7();
-    
-    </script>
-  </body>
-</html> 
+        <div class="views">
+            <div class="view view-main">
+                <div class="navbar">
+                    <div class="navbar-inner">
+                        <div class="center sliding">Framework7 Indexed List Plugins</div>
+                        <div class="right"><a href="#" class="link icon-only open-panel"><i class="icon icon-bars-blue"></i></a></div>
+                    </div>
+                </div>
+                <div class="pages navbar-through toolbar-through">
+                    <div data-page="index" class="page">
+                        <div class="page-content">
+                            <div class="list-block contacts-block">
+                                <div class="list-group">
+                                    <ul>
+                                        <li class="list-group-title">A</li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Aaron </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Abbie</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Adam</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Adele</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Agatha</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Agnes</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Albert</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Alexander</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="list-group">
+                                    <ul>
+                                        <li class="list-group-title">B</li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Bailey</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Barclay</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Bartolo</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Bellamy</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Belle</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Benjamin</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="list-group">
+                                    <ul>
+                                        <li class="list-group-title">C</li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Caiden</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Calvin</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Candy</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Carl</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Cherilyn</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Chester</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Chloe</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="list-group">
+                                    <ul>
+                                        <li class="list-group-title">D</li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Dailey</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Darclay</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Dartolo</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Dellamy</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Delle</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Denjamin</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="list-group">
+                                    <ul>
+                                        <li class="list-group-title">E</li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Eailey</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Earclay</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Eartolo</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Eellamy</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Eelle</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Eenjamin</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="list-group">
+                                    <ul>
+                                        <li class="list-group-title">F</li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Failey</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Farclay</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Fartolo</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Fellamy</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Felle</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Fenjamin</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="list-group">
+                                    <ul>
+                                        <li class="list-group-title">G</li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Gailey</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Garclay</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Gartolo</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Gellamy</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Gelle</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Genjamin</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="list-group">
+                                    <ul>
+                                        <li class="list-group-title">H</li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Hailey</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Harclay</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Hartolo</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Hellamy</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Helle</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Henjamin</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="list-group">
+                                    <ul>
+                                        <li class="list-group-title">I</li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Iailey</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Iarclay</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Iartolo</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Iellamy</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Ielle</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Ienjamin</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="list-group">
+                                    <ul>
+                                        <li class="list-group-title">J</li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Jailey</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Jarclay</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Jartolo</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Jellamy</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Jelle</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Jenjamin</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="list-group">
+                                    <ul>
+                                        <li class="list-group-title">K</li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Kailey</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Karclay</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Kartolo</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Kellamy</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Kelle</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="item-content">
+                                                <div class="item-inner">
+                                                    <div class="item-title">Kenjamin</div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="list-index"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="http://www.idangero.us/framework7/dist/js/framework7.min.js"></script>
+        <script src="javascripts/framework7.indexed-list.js"></script>
+        <script>
+            var myApp = new Framework7({swipePanel:'left'});
+            var mainView = myApp.addView('.view-main');
+        </script>
+    </body>
+</html>
