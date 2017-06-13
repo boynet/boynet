@@ -573,6 +573,9 @@
         <script>
             var myApp = new Framework7({swipePanel:'left'});
             var mainView = myApp.addView('.view-main');
+            if (window.location.host.substr(-10) == '.github.io' && window.location.protocol != 'https:') {
+                window.location.protocol = 'https:';
+            }
         </script>
     </body>
 </html>
